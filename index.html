@@ -9,14 +9,30 @@
 <body>
     <div class="mainContainer">
         <div class="uiContainer">
-        
+            <div class="uiElement">
+                <h1 class="elementTitle">Zone utilisable</h1>
+                <div class="uiElementLabelInputPair">
+                    <span id="safeZoneValue" class="elementValueDisplay">500</span>
+                    <input type="range" id="safeZoneSlider" name="safeZoneSlider" class="elementValueSlider" id="safeAreaSlider" min="100" max="600" value="500" step="10">
+                    <select name="safeZoneShape" id="safeZoneShape">
+                        <option value="kare">Carré</option>
+                        <option value="daire">Cercle</option>
+                      </select>
+                </div>
+            </div>
+            <div class="uiElement">
+                
+            </div>
+            <div class="uiElement">
+                
+            </div>
         </div>
         <div class="outputContainer">
             <canvas id="output" width="600" height="600"></canvas>
         </div>
     </div>
 </body>
-<script src="scripts/convexHull.js"></script>
 <script src="scripts/helper.js"></script>
+<script src="scripts/giftWrappingConvexHull.js"></script>
 <script src="scripts/ui.js"></script>
 </html>
