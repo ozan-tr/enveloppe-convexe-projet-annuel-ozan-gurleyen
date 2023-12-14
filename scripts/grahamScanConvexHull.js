@@ -138,7 +138,7 @@ function grahamScan() {
   for (let i = 2; i < points.length; i++) {
     while (
       convexHull.length >= 2 && // Tant que l'enveloppe convexe a au moins deux points
-      orientation(              // 
+      orientation(              
       convexHull[convexHull.length - 2],
       convexHull[convexHull.length - 1],
       points[i]) >= 0

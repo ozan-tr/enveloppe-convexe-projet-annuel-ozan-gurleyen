@@ -12,7 +12,7 @@
             <div class="uiElement">
                 <span class="elementTitle">Zone utilisable</span>
                 <div class="uiElementLabelInputPair">
-                    <span id="safeZoneValue" class="elementValueDisplay">500</span>
+                    <input id="safeZoneValue" class="elementValueDisplay" type="number" value="500" min="100" max="600">
                     <input type="range" id="safeZoneSlider" name="safeZoneSlider" class="elementValueSlider" id="safeAreaSlider" min="100" max="600" value="500" step="10">
                 </div>
             </div>
@@ -34,9 +34,9 @@
             <div class="uiElement">
                 <span class="elementTitle">Type de simulation</span>
                 <select name="simulationTypeSelect" id="simulationTypeSelect" class="multipleChoice">
+                    <option value="instant">Temps real (Plus detaille)</option>
                     <option value="stepByStep">Pas à pas</option>
                     <option value="fast">Pas à pas (Vit)</option>
-                    <option value="instant">Instantané</option>
                   </select>
             </div>
             <div class="uiElement">

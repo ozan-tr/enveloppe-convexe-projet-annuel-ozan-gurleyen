@@ -3,15 +3,15 @@ const ctx = canvas.getContext('2d');
 
 var zoneType = "kare";
 var algorithm = "grahamScan";
-var simulationType = "stepByStep";
+var simulationType = "instant";
 var safeZone = 500;
 var pointsNum = 100;
 var points = [];
+
 // Fonction pour générer des points aléatoires en fonction du type de zone choisi
 function generatePoints() {
     points = [];  // Supprime les anciens points
-    
-    // Si la zone est de type "kare"
+
     if (zoneType == "kare") {
         for (var pointIndex = 0; pointIndex < pointsNum; pointIndex++) {
             points.push({
@@ -20,10 +20,8 @@ function generatePoints() {
             });
         }
     } else if (zoneType == "daire") {
-        // Si la zone est de type "daire"
-        generateCircularPoints(pointsNum,safeZone / 2)
+        generateCircularPoints(pointsNum, safeZone / 2)
     } else if (zoneType == "hotspot") {
-        // Si la zone est de type "hotspot"
         const hotspotNum = Math.ceil(pointsNum / 250);     // Nombre de faux centres
         const numPerHotspot = pointsNum / hotspotNum;     // Nombre de points par faux centre
 
@@ -35,14 +33,14 @@ function generatePoints() {
 
             // Générer des points aléatoires autour du faux centre
 
-            generateCircularPoints(numPerHotspot, (safeZone - hotspotRadius) / 4, {x: hotspotX, y: hotspotY})
+            generateCircularPoints(numPerHotspot, (safeZone - hotspotRadius) / 4, { x: hotspotX, y: hotspotY })
         }
     }
 }
 
 
 // Fonction pour générer des points aléatoires dans un cercle
-function generateCircularPoints(amount, maxRadius, center= {x: safeZone / 2, y: safeZone / 2}) {
+function generateCircularPoints(amount, maxRadius, center = { x: safeZone / 2, y: safeZone / 2 }) {
     for (var pointIndex = 0; pointIndex < amount; pointIndex++) {
         var angle = Math.random() * 360;                 // Angle aléatoire entre 0 et 360 degrés
         var radius = Math.random() * maxRadius;       // Rayon aléatoire entre 0 et la moitié de la zone sécurisée
@@ -89,18 +87,18 @@ function updateCanvas() {
 }
 
 document.addEventListener("keydown", function (event) {
-    if(event.key == "Enter"){
+    if (event.key == "Enter") {
         startAlgorithm();
-    }else if(event.key == " "){
+    } else if (event.key == " ") {
         takeSnapshot();
-    }else if(event.key == "r"){
+    } else if (event.key == "r") {
         generatePoints();
         updateCanvas();
     }
 })
 
 
-function takeSnapshot(){
+function takeSnapshot() {
     var dataURL = canvas.toDataURL();
     var link = document.createElement('a');
     link.download = algorithm + "_" + simulationType + "_" + zoneType + "_" + safeZone + "_" + pointsNum + ".jpg";
@@ -113,10 +111,10 @@ function takeSnapshot(){
 // et -1 si le virage est dans le sens contraire des aiguilles d'une montre.
 function orientation(p, q, r) {
     const val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
-  
+
     // Si la valeur est proche de zéro, les points sont considérés comme colinéaires
     if (Math.abs(val) < 1e-6) return 0;
-  
+
     // Si la valeur est positive, le virage est dans le sens des aiguilles d'une montre
     return val > 0 ? 1 : -1;
-  }
+}

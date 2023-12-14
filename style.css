@@ -1,13 +1,29 @@
-body, html {
+:root {
+    --font-family: 'Arial', sans-serif;
+    --base-font-size: 16px;
+    --line-height: 1.5;
+    --main-bg-color: #f5f5f5;
+    --ui-bg-color: #222;
+    --text-color: #222;
+    --accent-color: #ccc;
+    --element-background-color: #fff;
+}
+
+body,
+html {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Arial', sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #222;
-    background-color: #f5f5f5;
+    font-family: var(--font-family);
+    font-size: var(--base-font-size);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--main-bg-color);
     overflow: hidden;
+}
+
+* {
+    outline: none;
 }
 
 .mainContainer {
@@ -22,12 +38,12 @@ body, html {
     flex-grow: 1;
     height: 100%;
     overflow: hidden;
-    background-color: #222;
+    background-color: var(--ui-bg-color);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 10px;
-    padding: 20px;
+    padding: 1.25rem;
+    /* 20px in relative units */
 }
 
 .uiElementLabelInputPair {
@@ -35,67 +51,105 @@ body, html {
     display: flex;
     align-items: center;
     flex-direction: column;
-
 }
 
 .elementTitle {
     flex-grow: 2;
-    text-align:center;
+    text-align: center;
     font-size: 1.5rem;
 }
 
-.multipleChoice{
+.multipleChoice,
+.elementValueDisplay {
+    background-color: var(--element-background-color);
     width: 100%;
     height: 50%;
     text-align: center;
     font-size: 1.5rem;
     cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+.elementValueDisplay::-webkit-inner-spin-button,
+.multipleChoice::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.elementValueDisplay {
+    border-style: none;
 }
 
 .uiButton {
+    background-color: transparent;
+    height: 40rem;
+    box-sizing: border-box;
+
+    border-style: none;
+    color: var(--ui-bg-color);
+
     width: 100%;
-    height: 100%;
     text-align: center;
     font-size: 1.5rem;
     cursor: pointer;
 }
-.uiInput{
-    text-align: center;
-    width: 100%;
-    height: 50%;
-    font-size: 1.5rem;
-    cursor:text;
-    padding: 0;
+
+.uiElement:has(.uiButton):hover {
+    background-color: var(--accent-color);
+} 
+
+.uiElement:has(.uiButton) {
+    transition: background-color 0.5s;
 }
 
-.elementValueDisplay{
+
+.multipleChoice:hover,
+.elementValueDisplay:hover {
+    background-color: var(--accent-color);
+}
+
+.multipleChoice {
+    margin-bottom: -0.5rem;
+    border-style: none;
+    border-top-style: dashed;
+}
+
+.elementValueDisplay {
+    margin: 0;
     overflow: hidden;
     text-align: center;
     font-size: 1rem;
     height: min-content;
+    width: 3.5rem;
+    border-radius: 1rem;
 }
+
 .elementValueSlider {
     width: 80%;
     overflow: hidden;
     text-align: center;
-    background-color: #ccc;
-    -webkit-appearance: none;  /* Override default CSS styles */
+    background-color: var(--accent-color);
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     border-radius: 10px;
 }
 
-.elementValueSlider::-webkit-slider-thumb{
+.elementValueSlider::-webkit-slider-thumb {
     -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     width: 20px;
     height: 20px;
-    background: #222;
+    background: var(--ui-bg-color);
     cursor: pointer;
     border-radius: 10px;
 }
 
+
+
 .uiElement {
-    background-color: white;
+    background-color: var(--element-background-color);
     width: 100%;
     overflow: hidden;
     height: 20vh;
@@ -103,6 +157,18 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 1rem;
+    border-radius: 0.50rem;
+    border: #ccc 0.3rem solid;
+    box-sizing: border-box;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+
+
+}
+
+.uiElement:last-of-type {
+    margin-bottom: 1rem;
 }
 
 .outputContainer {
@@ -113,11 +179,12 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #ccc;
+    background-color: var(--accent-color);
 }
 
 #output {
-    background-color: #f5f5f5;
-    border: 1px solid #ccc;
-    padding: 10px;
+    background-color: var(--main-bg-color);
+    border: 1px solid var(--accent-color);
+    padding: 1.25rem;
+    /* 20px in relative units */
 }

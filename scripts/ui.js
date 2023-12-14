@@ -6,14 +6,24 @@ const pointsNumberSlider = document.getElementById('pointsNumberSlider');
 const algorithmSelect = document.getElementById('algorithmSelect');
 const simulationTypeSelect = document.getElementById('simulationTypeSelect');
 
-safeZoneSlider.addEventListener("input",()=> {
-    safeZoneValue.innerHTML = safeZoneSlider.value;
+safeZoneSlider.addEventListener("input", () => {
+    safeZoneValue.value = safeZoneSlider.value;
     safeZone = safeZoneSlider.value;
     generatePoints();
     updateCanvas();
 })
 
-pointsNumberSlider.addEventListener("input",()=> {
+safeZoneValue.addEventListener("input", () => {
+    var num = Math.floor(safeZoneValue.value)
+
+    safeZone = num;
+    safeZoneSlider.value = num;
+
+    generatePoints();
+    updateCanvas();
+})
+
+pointsNumberSlider.addEventListener("input", () => {
     pointsNumberValue.value = pointsNumberSlider.value;
     pointsNum = pointsNumberSlider.value;
 
@@ -21,18 +31,17 @@ pointsNumberSlider.addEventListener("input",()=> {
     updateCanvas();
 })
 
-pointsNumberValue.addEventListener("change",()=> {
+pointsNumberValue.addEventListener("input", () => {
     var num = Math.floor(pointsNumberValue.value)
 
-    pointsNum= num;
+    pointsNum = num;
     pointsNumberSlider.value = num;
-
 
     generatePoints();
     updateCanvas();
 })
 
-safeZoneShape.addEventListener("input",()=> {
+safeZoneShape.addEventListener("input", () => {
     zoneType = safeZoneShape.value;
     generatePoints();
     updateCanvas();
@@ -41,25 +50,25 @@ safeZoneShape.addEventListener("input",()=> {
 
 
 
-simulationTypeSelect.addEventListener("input",()=> {
+simulationTypeSelect.addEventListener("input", () => {
     simulationType = simulationTypeSelect.value;
 })
 
-function startAlgorithm(){
+function startAlgorithm() {
 
-    if (algorithm == "grahamScan"){
-        if(simulationType == "stepByStep"){
+    if (algorithm == "grahamScan") {
+        if (simulationType == "stepByStep") {
             grahamScanStepByStep(100);
-        }else if(simulationType == "fast"){
+        } else if (simulationType == "fast") {
             grahamScanStepByStep(0);
-        }else if(simulationType == "instant"){
+        } else if (simulationType == "instant") {
             grahamScan();
         }
     }
 }
 
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function (event) {
     generatePoints();
     updateCanvas();
-    
+
 })
