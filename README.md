@@ -1,13 +1,20 @@
 # Trouver l'enveloppe convexe
 
+## Projet annuel - Ozan Gurleyen
+
+## Information
+
 [Lien vers la project](https://ozan-tr.github.io/enveloppe-convexe-projet-annuel-ozan-gurleyen/)
 
 ### Raccourcis
 
-Space - Prendre une capture d'écran 
-Enter - Démarrer la simulation
+**Space** - Prendre une capture d'écran
 
-## Graham Scan
+**Enter** - Démarrer la simulation
+
+## Introduction
+
+### Graham Scan
 
 L'algorithme de Graham's Scan est utilisé pour calculer l'enveloppe convexe d'un ensemble de points dans le plan. Il a été proposé par Ronald Graham en 1972. L'idée principale de l'algorithme est de choisir un point pivot ayant la plus basse coordonnée en y (et le plus à gauche en cas d'égalité). Ensuite, les autres points sont triés en fonction de leurs angles polaires par rapport au pivot. En traitant ensuite ces points triés, l'algorithme construit progressivement l'enveloppe convexe, qui est le plus petit polygone convexe englobant tous les points donnés.
 
