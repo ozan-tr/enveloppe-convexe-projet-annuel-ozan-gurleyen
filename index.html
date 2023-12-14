@@ -10,29 +10,51 @@
     <div class="mainContainer">
         <div class="uiContainer">
             <div class="uiElement">
-                <h1 class="elementTitle">Zone utilisable</h1>
+                <span class="elementTitle">Zone utilisable</span>
                 <div class="uiElementLabelInputPair">
                     <span id="safeZoneValue" class="elementValueDisplay">500</span>
                     <input type="range" id="safeZoneSlider" name="safeZoneSlider" class="elementValueSlider" id="safeAreaSlider" min="100" max="600" value="500" step="10">
-                    <select name="safeZoneShape" id="safeZoneShape">
-                        <option value="kare">Carré</option>
-                        <option value="daire">Cercle</option>
-                      </select>
                 </div>
             </div>
             <div class="uiElement">
-                
+                <span class="elementTitle">Modèle de formation de points</span>
+                <select name="safeZoneShape" id="safeZoneShape" class="multipleChoice">
+                    <option value="kare">Carré</option>
+                    <option value="daire">Cercle</option>
+                  </select>
             </div>
             <div class="uiElement">
-                
+                <span class="elementTitle">Nombre de points</span>
+                <input type="number" name="pointsNumberInput" id="pointsNumberInput" value="100" class="uiInput">
             </div>
+            <div class="uiElement">
+                <span class="elementTitle">Algorithm utilisé</span>
+                <select name="algorithmSelect" id="algorithmSelect" class="multipleChoice">
+                    <option value="grahamScan">Graham Scan</option>
+                  </select>
+            </div>
+            <div class="uiElement">
+                <button onclick="generatePoints();updateCanvas()" class="uiButton">Régénérer les points</button>
+            </div>
+            <div class="uiElement">
+                <button onclick="startAlgorithm()" class="uiButton">Appliquer l'algorithme</button>
+            </div>
+            <div class="uiElement">
+                <span class="elementTitle">Type de simulation</span>
+                <select name="simulationTypeSelect" id="simulationTypeSelect" class="multipleChoice">
+                    <option value="stepByStep">Pas à pas</option>
+                    <option value="instant">Instantané</option>
+                  </select>
+            </div>
+
         </div>
         <div class="outputContainer">
             <canvas id="output" width="600" height="600"></canvas>
         </div>
+
     </div>
 </body>
 <script src="scripts/helper.js"></script>
-<script src="scripts/giftWrappingConvexHull.js"></script>
+<script src="scripts/grahamScanConvexHull.js"></script>
 <script src="scripts/ui.js"></script>
 </html>

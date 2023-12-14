@@ -2,6 +2,8 @@ const canvas = document.getElementById('output');
 const ctx = canvas.getContext('2d');
 
 var zoneType = "kare";
+var algorithm = "grahamScan";
+var simulationType = "stepByStep";
 var safeZone = 500;
 var pointsNum = 100;
 var points = [];
@@ -53,23 +55,8 @@ function drawPoints() {
 }
 
 
-// Fonction pour déterminer l'orientation de trois points par rapport à un autre
-// Retourne 0 si les points sont colinéaires, 1 si le virage est dans le sens des aiguilles d'une montre,
-// et -1 si le virage est dans le sens contraire des aiguilles d'une montre.
-function orientation(p, q, r) {
-    const val = (q.y - p.y) * (r.x - q.x) - (q.x - p.x) * (r.y - q.y);
-  
-    // Si la valeur est proche de zéro, les points sont considérés comme colinéaires
-    if (Math.abs(val) < 1e-6) return 0;
-    
-    // Si la valeur est positive, le virage est dans le sens des aiguilles d'une montre
-    return val > 0 ? 1 : -1;
-  }
-
 // Fonction pour mettre à jour le canevas avec la zone sécurisée, les points aléatoires et l'enveloppe convexe
 function updateCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    //drawSafeZone();
     drawPoints();
-    giftWrappingConvexHull();
 }

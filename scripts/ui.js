@@ -1,23 +1,50 @@
 const safeZoneSlider = document.getElementById('safeZoneSlider');
 const safeZoneValue = document.getElementById('safeZoneValue');
 const safeZoneShape = document.getElementById('safeZoneShape');
+const pointsNumberInput = document.getElementById('pointsNumberInput');
+const algorithmSelect = document.getElementById('algorithmSelect');
+const simulationTypeSelect = document.getElementById('simulationTypeSelect');
 
-generatePoints()
-updateCanvas()
-
-safeZoneSlider.addEventListener("input",(event)=> {
+safeZoneSlider.addEventListener("input",()=> {
     safeZoneValue.innerHTML = safeZoneSlider.value;
     safeZone = safeZoneSlider.value;
     generatePoints();
     updateCanvas();
 })
 
-safeZoneShape.addEventListener("input",(event)=> {
+safeZoneShape.addEventListener("input",()=> {
     zoneType = safeZoneShape.value;
     generatePoints();
     updateCanvas();
 })
 
-document.addEventListener("DOMContentLoaded", function(event) {
+pointsNumberInput.addEventListener("input",()=> {
+    pointsNum = pointsNumberInput.value;
+    generatePoints();
     updateCanvas();
+})
+
+algorithmSelect.addEventListener("input",()=> {
+    algorithm = algorithmSelect.value;
+})
+
+simulationTypeSelect.addEventListener("input",()=> {
+    simulationType = simulationTypeSelect.value;
+})
+
+function startAlgorithm(){
+
+    if (algorithm == "grahamScan"){
+        if(simulationType == "stepByStep"){
+            grahamScanStepByStep();
+        }else{
+            grahamScan();
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    generatePoints();
+    updateCanvas();
+    
 })
