@@ -4,7 +4,7 @@
 
 ### Raccourcis
 
-Space - Prendre une capture d'écran
+Space - Prendre une capture d'écran 
 Enter - Démarrer la simulation
 
 ## Graham Scan
