@@ -1,4 +1,4 @@
-# Trouver l'enveloppe convexe à l'aide de l'algorithme de Graham scan
+# Trouver l'enveloppe convexe
 
 ## Graham Scan
 
