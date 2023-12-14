@@ -189,8 +189,8 @@ function grahamScan() {
 
   console.log(perimeterLength);
 
-  ctx.fillText("Longueur du périmètre: " + pixelsToCm(perimeterLength).toFixed(2) +"cm", canvas.width/2, 50);
-  ctx.fillText("Aire: " + pixelsToCm(Math.abs(area)*0.5).toFixed(2) + "cm²", canvas.width/2, 75);
+  ctx.fillText("Longueur du périmètre: " + perimeterLength.toFixed(2) +"px", canvas.width/2, 50);
+  ctx.fillText("Aire: " + (Math.abs(area)/2).toFixed(2) + "px", canvas.width/2, 75);
 
 }
 
@@ -207,10 +207,6 @@ function orientation(p, q, r) {
   return val > 0 ? 1 : -1;
 }
 
-// Fonction pour convertir des pixels en mètres
-function pixelsToCm(pixels) {
-  return pixels * 2.54 / 96;
-}
 
 
 
