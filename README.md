@@ -1,6 +1,6 @@
 # Trouver l'enveloppe convexe
 
-## Projet annuel - Ozan Gurleyen
+*Projet annuel - Can Ozan Gurleyen*
 
 ## Information
 
