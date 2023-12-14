@@ -10,6 +10,7 @@ safeZoneSlider.addEventListener("input",()=> {
     safeZone = safeZoneSlider.value;
     generatePoints();
     updateCanvas();
+    
 })
 
 safeZoneShape.addEventListener("input",()=> {
@@ -24,9 +25,6 @@ pointsNumberInput.addEventListener("input",()=> {
     updateCanvas();
 })
 
-algorithmSelect.addEventListener("input",()=> {
-    algorithm = algorithmSelect.value;
-})
 
 simulationTypeSelect.addEventListener("input",()=> {
     simulationType = simulationTypeSelect.value;
@@ -36,8 +34,10 @@ function startAlgorithm(){
 
     if (algorithm == "grahamScan"){
         if(simulationType == "stepByStep"){
-            grahamScanStepByStep();
-        }else{
+            grahamScanStepByStep(100);
+        }else if(simulationType == "fast"){
+            grahamScanStepByStep(0);
+        }else if(simulationType == "instant"){
             grahamScan();
         }
     }

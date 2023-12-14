@@ -1,7 +1,7 @@
 var grahamScanLoop = null;
 
 // Fonctions pour l'algorithme de l'enveloppe convexe
-function grahamScanStepByStep() {
+function grahamScanStepByStep(delay) {
   clearInterval(grahamScanLoop);
 
   // Faire une copie des points pour ne pas modifier l'original
@@ -100,10 +100,11 @@ function grahamScanStepByStep() {
       convexHull.push(pointsCopy[i]);
 
       drawConvexHull(convexHull);
+      
     }
 
     i++
-  }, 100);
+  }, delay);
 
 }
 
@@ -127,7 +128,7 @@ function grahamScan() {
     const angleA = Math.atan2(a.y - startPoint.y, a.x - startPoint.x);
     const angleB = Math.atan2(b.y - startPoint.y, b.x - startPoint.x);
 
-    return angleA - angleB;
+    return angleA - angleB; 
   });
 
   // Initialiser l'enveloppe convexe avec le point de départ et les deux premiers points triés
@@ -136,8 +137,8 @@ function grahamScan() {
   // Algorithme de l'enveloppe convexe
   for (let i = 2; i < points.length; i++) {
     while (
-      convexHull.length >= 2 &&
-      orientation(
+      convexHull.length >= 2 && // Tant que l'enveloppe convexe a au moins deux points
+      orientation(              // 
       convexHull[convexHull.length - 2],
       convexHull[convexHull.length - 1],
       points[i]) >= 0

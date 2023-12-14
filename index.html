@@ -21,6 +21,7 @@
                 <select name="safeZoneShape" id="safeZoneShape" class="multipleChoice">
                     <option value="kare">Carré</option>
                     <option value="daire">Cercle</option>
+                    <option value="hotspot">Pattern</option>
                   </select>
             </div>
             <div class="uiElement">
@@ -28,15 +29,10 @@
                 <input type="number" name="pointsNumberInput" id="pointsNumberInput" value="100" class="uiInput">
             </div>
             <div class="uiElement">
-                <span class="elementTitle">Algorithm utilisé</span>
-                <select name="algorithmSelect" id="algorithmSelect" class="multipleChoice">
-                    <option value="grahamScan">Graham Scan</option>
-                  </select>
-            </div>
-            <div class="uiElement">
                 <span class="elementTitle">Type de simulation</span>
                 <select name="simulationTypeSelect" id="simulationTypeSelect" class="multipleChoice">
                     <option value="stepByStep">Pas à pas</option>
+                    <option value="fast">Pas à pas (Vit)</option>
                     <option value="instant">Instantané</option>
                   </select>
             </div>
