@@ -60,3 +60,19 @@ function updateCanvas() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawPoints();
 }
+
+document.addEventListener("keydown", function (event) {
+    if(event.key == "Enter"){
+        startAlgorithm();
+    }else if(event.key == " "){
+        takeSnapshot();
+    }
+})
+
+function takeSnapshot(){
+    var dataURL = canvas.toDataURL();
+    var link = document.createElement('a');
+    link.download = algorithm + "_" + simulationType + "_" + zoneType + "_" + safeZone + "_" + pointsNum + ".jpg";
+    link.href = dataURL
+    link.click();
+}
