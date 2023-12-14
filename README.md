@@ -12,6 +12,8 @@
 
 **Enter** - Démarrer la simulation
 
+**R** - Régénérer les points
+
 ## Introduction
 
 ### Graham Scan

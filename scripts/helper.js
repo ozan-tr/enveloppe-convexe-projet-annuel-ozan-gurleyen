@@ -66,6 +66,9 @@ document.addEventListener("keydown", function (event) {
         startAlgorithm();
     }else if(event.key == " "){
         takeSnapshot();
+    }else if(event.key == "r"){
+        generatePoints();
+        updateCanvas();
     }
 })
 

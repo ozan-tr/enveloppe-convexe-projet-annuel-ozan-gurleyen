@@ -34,19 +34,18 @@
                   </select>
             </div>
             <div class="uiElement">
-                <button onclick="generatePoints();updateCanvas()" class="uiButton">Régénérer les points</button>
-            </div>
-            <div class="uiElement">
-                <button onclick="startAlgorithm()" class="uiButton">Appliquer l'algorithme</button>
-            </div>
-            <div class="uiElement">
                 <span class="elementTitle">Type de simulation</span>
                 <select name="simulationTypeSelect" id="simulationTypeSelect" class="multipleChoice">
                     <option value="stepByStep">Pas à pas</option>
                     <option value="instant">Instantané</option>
                   </select>
             </div>
-
+            <div class="uiElement">
+                <button onclick="generatePoints();updateCanvas()" class="uiButton">Régénérer les points</button>
+            </div>
+            <div class="uiElement">
+                <button onclick="startAlgorithm()" class="uiButton">Appliquer l'algorithme</button>
+            </div>
         </div>
         <div class="outputContainer">
             <canvas id="output" width="600" height="600"></canvas>

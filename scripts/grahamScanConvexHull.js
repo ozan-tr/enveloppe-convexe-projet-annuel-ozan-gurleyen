@@ -160,6 +160,7 @@ function grahamScan() {
       convexHull[i].y + canvas.height / 2 - safeZone / 2
     );
   }
+  ctx.strokeStyle = "black";
   ctx.closePath();
   ctx.stroke();
 
@@ -169,6 +170,7 @@ function grahamScan() {
 
   ctx.font = "20px Arial";
   ctx.textAlign = "center";
+  ctx.fillStyle = "black";
   ctx.fillText("Temps d'exécution: " + (endTime - startTime).toFixed(2) + " ms", canvas.width/2, 25);
 
 }
