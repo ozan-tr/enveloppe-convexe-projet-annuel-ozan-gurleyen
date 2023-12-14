@@ -44,7 +44,13 @@ fonction grahamScan(points) :
 
 #### Examples du projet
 
+<details>
+    <summary>Cliquez pour agrandir</summary>
+    
 ![grahamScan_instant_daire_550_100](https://github.com/ozan-tr/enveloppe-convexe-projet-annuel-ozan-gurleyen/assets/58356769/497e9baa-51eb-4d3e-a4a8-1931a0a6178d)
 ![grahamScan_instant_daire_550_500](https://github.com/ozan-tr/enveloppe-convexe-projet-annuel-ozan-gurleyen/assets/58356769/87c56b3c-9f8b-4400-9685-562add27a86e)
 ![grahamScan_instant_kare_500_100](https://github.com/ozan-tr/enveloppe-convexe-projet-annuel-ozan-gurleyen/assets/58356769/dbfed429-92ab-4f08-9244-0e594997fe0a)
 ![grahamScan_instant_kare_500_500](https://github.com/ozan-tr/enveloppe-convexe-projet-annuel-ozan-gurleyen/assets/58356769/f21b7949-ac59-4ce5-b1bd-cd78697283b1)
+    
+</details>
+
