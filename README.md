@@ -2,7 +2,7 @@
 
 *Projet annuel - Can Ozan Gurleyen*
 
-[Lien vers la project](https://ozan-tr.github.io/enveloppe-convexe-projet-annuel-ozan-gurleyen/)
+[PROJET](https://ozan-tr.github.io/enveloppe-convexe-projet-annuel-ozan-gurleyen/)
 
 ## Table des matières
 
