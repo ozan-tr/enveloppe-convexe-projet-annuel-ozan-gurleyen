@@ -26,7 +26,10 @@
             </div>
             <div class="uiElement">
                 <span class="elementTitle">Nombre de points</span>
-                <input type="number" name="pointsNumberInput" id="pointsNumberInput" value="100" class="uiInput">
+                <div class="uiElementLabelInputPair">
+                    <input id="pointsNumberValue" class="elementValueDisplay" type="number" value="100" min="5" max="10000">
+                    <input type="range" id="pointsNumberSlider" name="pointsNumberSlider" class="elementValueSlider" min="5" max="10000" value="100" step="10">
+                </div>
             </div>
             <div class="uiElement">
                 <span class="elementTitle">Type de simulation</span>

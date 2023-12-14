@@ -2,9 +2,23 @@
 
 *Projet annuel - Can Ozan Gurleyen*
 
-## Information
-
 [Lien vers la project](https://ozan-tr.github.io/enveloppe-convexe-projet-annuel-ozan-gurleyen/)
+
+## Table des matières
+
+- [Trouver l'enveloppe convexe](#trouver-lenveloppe-convexe)
+  - [Table des matières](#table-des-matières)
+  - [Raccourcis](#raccourcis)
+  - [Introduction](#introduction)
+    - [Graham Scan](#graham-scan)
+      - [Pseudo-code](#pseudo-code)
+      - [Complexité](#complexité)
+    - [L'aire et le périmètre de l'enveloppe convexe](#laire-et-le-périmètre-de-lenveloppe-convexe)
+      - [L'aire](#laire)
+      - [Le périmètre](#le-périmètre)
+  - [Langage](#langage)
+  - [Examples du projet](#examples-du-projet)
+  - [Sources](#sources)
 
 ### Raccourcis
 
@@ -18,7 +32,7 @@
 
 ### Graham Scan
 
-L'algorithme de Graham's Scan est utilisé pour calculer l'enveloppe convexe d'un ensemble de points dans le plan. Il a été proposé par Ronald Graham en 1972. L'idée principale de l'algorithme est de choisir un point pivot ayant la plus basse coordonnée en y (et le plus à gauche en cas d'égalité). Ensuite, les autres points sont triés en fonction de leurs angles polaires par rapport au pivot. En traitant ensuite ces points triés, l'algorithme construit progressivement l'enveloppe convexe, qui est le plus petit polygone convexe englobant tous les points donnés.
+L'algorithme de [Graham's Scan](#sources) est utilisé pour calculer l'enveloppe convexe d'un ensemble de points dans le plan. Il a été proposé par Ronald Graham en 1972. L'idée principale de l'algorithme est de choisir un point pivot ayant la plus basse coordonnée en y (et le plus à gauche en cas d'égalité). Ensuite, les autres points sont triés en fonction de leurs angles polaires par rapport au pivot. En traitant ensuite ces points triés, l'algorithme construit progressivement l'enveloppe convexe, qui est le plus petit polygone convexe englobant tous les points donnés.
 
 #### Pseudo-code
 
@@ -42,7 +56,59 @@ fonction grahamScan(points) :
     retourner enveloppeConvexe
 ```
 
-#### Examples du projet
+#### Complexité
+
+La complexité de l'algorithme de Graham's Scan est O(n log n), où n est le nombre de points. La complexité de l'algorithme est dominée par le tri des points en fonction de leurs angles polaires par rapport au point pivot. Le tri peut être effectué en O(n log n) en utilisant un algorithme de tri efficace tel que le tri rapide. Le reste de l'algorithme est linéaire, car il ne fait que parcourir les points triés.
+
+### L'aire et le périmètre de l'enveloppe convexe
+
+Pour voir l'aire et la perimetre d'un envelope convexe il faut selectionner l'option "Instantané" dans le menu de type de simulation.
+
+#### L'aire
+
+L'aire d'un polygone peut être calculée en utilisant la formule suivante :
+
+$$
+A = \frac{1}{2} \sum_{i=0}^{n-1} (x_i y_{i+1} - x_{i+1} y_i)
+$$
+
+Implementé en JavaScript :
+
+```js
+  var area = convexHull.reduce((acc, point, index, array) => {
+    if (index == array.length - 1) return acc + (point.x * array[0].y - point.y * array[0].x);
+    return acc + (point.x * array[index + 1].y - point.y * array[index + 1].x);
+  }, 0);
+```
+
+(Le résultat est divisé par 2 car c'est la somme des aires des triangles formés par les points du polygone, et c'est formule donne les aires des carrés formés par les points du polygone)
+
+#### Le périmètre
+
+Le périmètre d'un polygone peut être calculé en utilisant la formule suivante :
+
+$$
+P = \sum_{i=0}^{n-1} \sqrt{(x_{i+1} - x_i)^2 + (y_{i+1} - y_i)^2}
+$$
+
+Implementé en JavaScript :
+
+```js
+var perimeterLength = convexHull.reduce((acc, point, index, array) => {
+    if (index == array.length - 1) return acc + distance(point, array[0]);
+    return acc + distance(point, array[index + 1]);
+  }, 0);
+
+function distance(point1, point2) {  // Pythagorean theorem
+    return Math.sqrt(Math.pow(point2.x - point1.x,2) + Math.pow(point2.y - point1.y, 2));
+}
+```
+
+## Langage
+
+Le langage utilisé pour ce projet est JavaScript.
+
+## Examples du projet
 
 <details>
     <summary>Cliquez pour agrandir</summary>
@@ -54,3 +120,8 @@ fonction grahamScan(points) :
     
 </details>
 
+## Sources
+
+- [Graham Scan](https://en.wikipedia.org/wiki/Graham_scan)
+- [Convex Hull](https://en.wikipedia.org/wiki/Convex_hull)
+- [L'aire d'un polygone](https://byjus.com/maths/convex-polygon/#:~:text=Area%20of%20convex%20polygon%20can,triangle%20and%20summing%20up%20them.)

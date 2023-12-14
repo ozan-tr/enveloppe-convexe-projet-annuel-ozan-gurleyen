@@ -100,7 +100,7 @@ function grahamScanStepByStep(delay) {
       convexHull.push(pointsCopy[i]);
 
       drawConvexHull(convexHull);
-      
+
     }
 
     i++
@@ -174,6 +174,24 @@ function grahamScan() {
   ctx.fillStyle = "black";
   ctx.fillText("Temps d'exécution: " + (endTime - startTime).toFixed(2) + " ms", canvas.width/2, 25);
 
+
+  // Calculer la longueur du périmètre de l'enveloppe convexe
+  var perimeterLength = convexHull.reduce((acc, point, index, array) => {
+    if (index == array.length - 1) return acc + distance(point, array[0]);
+    return acc + distance(point, array[index + 1]);
+  }, 0);
+
+  // Calculer l'aire de l'enveloppe convexe (formule de Gauss)
+  var area = convexHull.reduce((acc, point, index, array) => {
+    if (index == array.length - 1) return acc + (point.x * array[0].y - point.y * array[0].x);
+    return acc + (point.x * array[index + 1].y - point.y * array[index + 1].x);
+  }, 0);
+
+  console.log(perimeterLength);
+
+  ctx.fillText("Longueur du périmètre: " + pixelsToCm(perimeterLength).toFixed(2) +"cm", canvas.width/2, 50);
+  ctx.fillText("Aire: " + pixelsToCm(Math.abs(area)*0.5).toFixed(2) + "cm²", canvas.width/2, 75);
+
 }
 
 // Fonction pour déterminer l'orientation de trois points par rapport à un autre
@@ -189,6 +207,10 @@ function orientation(p, q, r) {
   return val > 0 ? 1 : -1;
 }
 
+// Fonction pour convertir des pixels en mètres
+function pixelsToCm(pixels) {
+  return pixels * 2.54 / 96;
+}
 
 
 

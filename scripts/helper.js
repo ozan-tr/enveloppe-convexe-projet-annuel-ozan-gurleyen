@@ -40,8 +40,8 @@ function generatePoints() {
     }
 }
 
-safeZone / 2
 
+// Fonction pour générer des points aléatoires dans un cercle
 function generateCircularPoints(amount, maxRadius, center= {x: safeZone / 2, y: safeZone / 2}) {
     for (var pointIndex = 0; pointIndex < amount; pointIndex++) {
         var angle = Math.random() * 360;                 // Angle aléatoire entre 0 et 360 degrés
@@ -51,6 +51,10 @@ function generateCircularPoints(amount, maxRadius, center= {x: safeZone / 2, y: 
             y: center.y + Math.sin(angle) * radius  // y = centre + sin(angle) * rayon
         });
     }
+}
+
+function distance(a, b) {
+    return Math.sqrt((b.x - a.x) ** 2 + (b.y - a.y) ** 2); // Théorème de Pythagore
 }
 
 // Fonction pour dessiner la zone sécurisée (rectangle ou cercle) sur le canevas

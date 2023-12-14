@@ -1,7 +1,8 @@
 const safeZoneSlider = document.getElementById('safeZoneSlider');
 const safeZoneValue = document.getElementById('safeZoneValue');
 const safeZoneShape = document.getElementById('safeZoneShape');
-const pointsNumberInput = document.getElementById('pointsNumberInput');
+const pointsNumberValue = document.getElementById('pointsNumberValue');
+const pointsNumberSlider = document.getElementById('pointsNumberSlider');
 const algorithmSelect = document.getElementById('algorithmSelect');
 const simulationTypeSelect = document.getElementById('simulationTypeSelect');
 
@@ -10,7 +11,25 @@ safeZoneSlider.addEventListener("input",()=> {
     safeZone = safeZoneSlider.value;
     generatePoints();
     updateCanvas();
-    
+})
+
+pointsNumberSlider.addEventListener("input",()=> {
+    pointsNumberValue.value = pointsNumberSlider.value;
+    pointsNum = pointsNumberSlider.value;
+
+    generatePoints();
+    updateCanvas();
+})
+
+pointsNumberValue.addEventListener("change",()=> {
+    var num = Math.floor(pointsNumberValue.value)
+
+    pointsNum= num;
+    pointsNumberSlider.value = num;
+
+
+    generatePoints();
+    updateCanvas();
 })
 
 safeZoneShape.addEventListener("input",()=> {
@@ -19,11 +38,7 @@ safeZoneShape.addEventListener("input",()=> {
     updateCanvas();
 })
 
-pointsNumberInput.addEventListener("input",()=> {
-    pointsNum = pointsNumberInput.value;
-    generatePoints();
-    updateCanvas();
-})
+
 
 
 simulationTypeSelect.addEventListener("input",()=> {
